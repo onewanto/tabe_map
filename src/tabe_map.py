@@ -17,8 +17,7 @@ class TabeMap:
         self.init_path()
 
     def init_path(self):
-        self.expid = '1013'
-        self.is_debug = True
+        self.is_debug = False
         self.output_path = './static'
         os.makedirs(self.output_path, exist_ok=True)
 
