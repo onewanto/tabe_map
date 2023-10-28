@@ -1,0 +1,19 @@
+version: '3.9'
+
+services:
+  work:
+    build: .
+    stdin_open: true
+    tty: true
+    ipc: host
+    volumes:
+      - .:/work
+      - ./static/.cache:/root/.cache
+    working_dir: /work
+    environment:
+      - PYTHONPATH=/work
+    ulimits:
+      memlock: -1
+      stack: 67108864
+    ports:
+      - 8501:8501

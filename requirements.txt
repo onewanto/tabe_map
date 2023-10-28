@@ -1,0 +1,6 @@
+folium
+japanize_matplotlib
+pandas
+numpy
+tqdm
+streamlit
