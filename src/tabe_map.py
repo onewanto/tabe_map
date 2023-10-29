@@ -71,7 +71,7 @@ class TabeMap:
         maps = folium.Map(location=loc_central,
                           zoom_start=11).add_to(figure)
         for i in self.df.index:
-            shop_info = self.return_shop_info(self.df.loc[i])
+            shop_info = self.get_shop_info(self.df.loc[i])
             iframe = folium.IFrame(shop_info)
             popup = folium.Popup(iframe, min_width=400, max_width=400)
             location = [self.locations['lat'][i], self.locations['lng'][i]]
@@ -84,7 +84,13 @@ class TabeMap:
         # 保存
         maps.save(os.path.join(self.output_path, 'map.html'))
 
-    def return_shop_info(self, data):
+    def get_shop_info(self, data):
+        target_keys = ['name', 'address', 'budget', 'genre', 'rating', 'memo']
+
+        for key in target_keys:
+            if key not in data:
+                data[key] = '<no data>'
+
         return f"""
 店名：{data['name']}<br>
 住所：{data['address']}<br>
