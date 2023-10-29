@@ -24,7 +24,7 @@ def main():
             # 2. Create a download link for the file
             href = f'<a href="data:text/html;base64,{b64}" download="map.html">Download map.html</a>'
 
-            st.markdown('### Download File')
+            st.markdown('# Download File')
             st.markdown(href, unsafe_allow_html=True)
 
         except Exception as e:
