@@ -22,7 +22,7 @@ class TabeMap:
         self.output_path = './static'
         os.makedirs(self.output_path, exist_ok=True)
 
-    def get_location_(self, address):
+    def get_location(self, address):
         self.address = address
         url_geocoding = f'https://www.geocoding.jp/api/?q={urllib.parse.quote(address)}'
 
@@ -37,16 +37,6 @@ class TabeMap:
     def test_get_location(self, address):
         self.lat = 35.4506175296651 + random() / 5 - 0.1
         self.lng = 139.63423904446174 + random() / 5 - 0.1
-        return self.lat, self.lng
-
-    def get_location(self, address):
-	# Community Geocoder APIのエンドポイント
-	API_ENDPOINT = "https://community-geocoder.geolonia.com/api"
-
-        """指定された住所から緯度経度を取得"""
-        response = requests.get(API_ENDPOINT, params={"q": address})
-        data = response.json()
-        self.lat, self.lng = data.get("latitude"), data.get("longitude")
         return self.lat, self.lng
 
     def load_data(self, uploaded_file):
